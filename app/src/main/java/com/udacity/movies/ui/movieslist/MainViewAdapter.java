@@ -36,7 +36,7 @@ public class MainViewAdapter extends ArrayAdapter<Result> {
 
         try {
             Picasso.with(parent.getContext())
-                    .load(Constants.IMAGE_BASE_URL + result.getPosterPath())
+                    .load(Constants.IMAGE_BASE_URL_185 + result.getPosterPath())
                     .placeholder(R.mipmap.ic_launcher) // can also be a drawable
                     .error(R.mipmap.ic_launcher) // will be displayed if the image cannot be loaded
                     .into(iconView);

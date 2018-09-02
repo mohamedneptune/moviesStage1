@@ -3,12 +3,12 @@
 
     <item
         android:id="@+id/menu_popular"
-        android:title="Popular"
+        android:title="@string/popular"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/menu_top_rated"
-        android:title="TopRated"
+        android:title="@string/top_rated"
         app:showAsAction="always"/>
 
 </menu>

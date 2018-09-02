@@ -23,7 +23,6 @@ public class MainViewModel extends AndroidViewModel {
     private static final String TAG = MainViewModel.class.getSimpleName();
     private RetrofitService mRetrofitService;
     private final MutableLiveData<Example> movies = new MutableLiveData<>();
-    private final MutableLiveData<Result> mSelectedMovie = new MutableLiveData();
 
     public MainViewModel(@NonNull Application application) {
         super(application);
@@ -37,7 +36,6 @@ public class MainViewModel extends AndroidViewModel {
                     @Override
                     public void onCompleted() {
                         Log.i(TAG, "onCompleted");
-
                     }
 
                     @Override
@@ -75,16 +73,7 @@ public class MainViewModel extends AndroidViewModel {
                 });
     }
 
-
     public LiveData<Example> getMovies() {
         return movies;
-    }
-
-    public LiveData<Result> getSelectedMovie() {
-        return mSelectedMovie;
-    }
-
-    public void setSelectedMovie(Result movie){
-        mSelectedMovie.postValue(movie);
     }
 }

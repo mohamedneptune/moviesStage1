@@ -42,14 +42,17 @@ public class MainActivity extends AppCompatActivity {
 
         setupViewModel();
 
+        mViewModel.getPopularMovies();
+        setTitle(getResources().getString(R.string.popular));
+
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mViewModel.setSelectedMovie(mMovies.get(position));
                 Intent intent = new Intent(MainActivity.this,DetailsActivity.class);
                 intent.putExtra(DetailsActivity.EXTRA_POSITION, position);
+                intent.putExtra(DetailsActivity.SELECTED_MOVIE_ID, mMovies.get(position).getId());
                 startActivity(intent);
             }
 
@@ -72,12 +75,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        mViewModel.getPopularMovies();
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.list_menu, menu);
 
@@ -91,10 +88,12 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.menu_popular:
                 mViewModel.getPopularMovies();
+                setTitle(getResources().getString(R.string.popular));
                 return true;
 
             case R.id.menu_top_rated:
                 mViewModel.getTopRatedMovies();
+                setTitle(getResources().getString(R.string.top_rated));
                 return true;
 
             default:
